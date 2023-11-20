@@ -1,5 +1,6 @@
 import random
 import time
+import pandas as pd
 import requests
 import re
 from bs4 import BeautifulSoup
@@ -9,7 +10,7 @@ class WikiArticleGetter:
     def __init__(self):
         self.dict_of_pages = {}
 
-    def retrieve_single_wiki_article(self):
+    def retrieve_single_wiki_article(self) -> None:
         time.sleep(random.uniform(0, 1))
         response = requests.get("http://en.wikipedia.org/wiki/Special:Random")
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -29,9 +30,14 @@ class WikiArticleGetter:
         else:
             raise Exception("Could not find article content on this page.")
 
-    def retrieve_wiki_articles(self, number_of_articles):
+    def retrieve_wiki_articles(self, number_of_articles: int) -> None:
         while len(self.dict_of_pages) < number_of_articles:
             try:
                 self.retrieve_single_wiki_article()
             except Exception as e:
                 print(f"Error: {e}")
+
+    def save_wiki_articles(self, filename: str) -> None:
+        dataframe = pd.DataFrame.from_dict(self.dict_of_pages, orient='index')
+        dataframe.to_csv(filename)
+        return None
