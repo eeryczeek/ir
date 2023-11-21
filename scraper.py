@@ -41,3 +41,22 @@ class WikiArticleGetter:
         dataframe = pd.DataFrame.from_dict(self.dict_of_pages, orient='index')
         dataframe.to_csv(filename)
         return None
+    
+    def retrive_given_wiki_articles(self, links: list) -> dict[str, str]:
+        retrieved_articles = {}
+        for link in links:
+            time.sleep(random.uniform(0, 1))
+            response = requests.get(link)
+            soup = BeautifulSoup(response.text, 'html.parser')
+            main_content = soup.find("div", {"id": "mw-content-text"})
+            if main_content:
+                article_text = main_content.get_text()
+                retrieved_link = re.search(r'Retrieved from "(.*?)"', article_text)
+                if retrieved_link:
+                    article_text = article_text.replace(retrieved_link.group(0), '')
+                    retrieved_articles[retrieved_link.group(1)] = article_text
+                else:
+                    raise Exception("Could not find the 'Retrieved from' link.")
+            else:
+                raise Exception("Could not find article content on this page.")
+        return self.dict_of_pages

@@ -15,3 +15,7 @@ def load_wiki_articles(filename: str) -> dict:
     for index, row in dataframe.iterrows():
         wiki_dict[row['link']] = row['wiki_text']
     return wiki_dict
+
+def read_query_links(filename: str) -> list:
+    with open(filename, 'r') as f:
+        return [line.strip() for line in f.readlines()]
