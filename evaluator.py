@@ -1,5 +1,6 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 
 class Evaluator:
     """
@@ -18,15 +19,12 @@ class Evaluator:
         Evaluate the model on the given data.
         """
         (query_keys, query_vals), (scrap_keys, scrap_vals) = self.tf_idf()
-        similarities = cosine_similarity(query_vals, scrap_vals)
+        similarities = cosine_similarity(scrap_vals, query_vals)
 
+        similarities = np.max(similarities, axis=1)
         # map the similarities to orginal scrapped articles
-        result = {}
-        for i, key in enumerate(query_keys):
-            result[key] = similarities[i]
-
-        # return scrapped articles keys for which similarity is the highest
-        return result, similarities
+        scrapped_files_ranking = {url: similarities[idx] for idx, url in enumerate(scrap_keys)}
+        return sorted(scrapped_files_ranking.items(), key=lambda x: x[1], reverse=True)
 
 
     def tf_idf(self):

@@ -23,6 +23,5 @@ if __name__ == "__main__":
     query = preprocessor.processed_articles
 
     evaluator = Evaluator(query, wiki_articles)
-    result, similarities = evaluator.evaluate()
-    print(result)
-    print(similarities)
+    ranked_scrapped_articles = evaluator.evaluate()
+    print(ranked_scrapped_articles)
