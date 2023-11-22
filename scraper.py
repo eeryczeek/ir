@@ -12,7 +12,6 @@ class WikiArticleGetter:
         response = requests.get(
             link if link else "https://en.wikipedia.org/wiki/Special:Random")
         soup = BeautifulSoup(response.text, 'html.parser')
-
         main_content = soup.find("div", {"id": "mw-content-text"})
 
         if main_content:

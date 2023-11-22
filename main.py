@@ -1,6 +1,6 @@
 from scraper import WikiArticleGetter
 from text_processor import Preprocessor
-from utils import save_wiki_articles, load_wiki_articles, read_query_links
+from utils import save_wiki_articles, load_wiki_articles, read_query_links, save_ranking
 from evaluator import Evaluator
 import os
 import argparse
@@ -30,9 +30,11 @@ if __name__ == "__main__":
         query = wikiScraper.retrieve_wiki_articles(
             len(query_links), query_links)
     else:
-        query = wikiScraper.retrieve_wiki_articles(2)
+        query = wikiScraper.retrieve_wiki_articles(3)
     query = preprocessor.process_articles(query)
 
     evaluator = Evaluator(query, wiki_articles)
     ranked_scrapped_articles = evaluator.evaluate()
-    print(json.dumps(ranked_scrapped_articles, indent=2))
+    save_ranking("ranking.csv", ranked_scrapped_articles)
+
+    # print(json.dumps(ranked_scrapped_articles, indent=2))
