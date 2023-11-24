@@ -35,5 +35,3 @@ if __name__ == "__main__":
     evaluator = Evaluator(query, wiki_articles)
     ranked_scrapped_articles = evaluator.evaluate()
     save_ranking("ranking.csv", ranked_scrapped_articles)
-
-    # print(json.dumps(ranked_scrapped_articles, indent=2))

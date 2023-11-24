@@ -14,7 +14,6 @@ class Visualizator:
         Generates a word cloud based on TF-IDF vectors.
         """
 
-        # Assuming all_article_vectorized_data is a list of sparse matrices
         all_data = vstack(all_article_vectorized_data)
         sums = np.array(all_data.sum(axis=0)).ravel()
 
@@ -72,13 +71,11 @@ class Visualizator:
 
         fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
 
-        # Plot the Query
         ax.fill(angles, query_values, color='b', alpha=0.25, label='Query')
         ax.set_yticklabels([])
         ax.set_xticks(angles)
         ax.set_xticklabels(labels)
 
-        # Plot the Stacked Article values
         ax.fill(angles, article_values, color='r',
                 alpha=0.25, label='Stacked Articles')
         ax.set_yticklabels([])
@@ -89,7 +86,6 @@ class Visualizator:
 
     def visualize_results(self, vectorizer, sorted_ranking, query_keys, query_vals, scrap_keys, scrap_vals, top_n=5, top_cooccurring_n=10):
 
-        # Generate a word clouds
         self.generate_combined_wordcloud(
             vectorizer.get_feature_names_out(),
             'query_combined_wordcloud',
@@ -100,7 +96,6 @@ class Visualizator:
             'scrap_combined_wordcloud',
             scrap_vals)
 
-        # Generate a heatmap
         self.generate_combined_heatmap(
             vectorizer.get_feature_names_out(),
             'query_combined_heatmap',
@@ -111,7 +106,6 @@ class Visualizator:
             'scrap_combined_heatmap',
             cosine_similarity(scrap_vals))
 
-        # count the number of words in each article and query
         query_word_counts = np.array(query_vals.sum(axis=0)).ravel()
         scrap_word_counts = np.array(scrap_vals.sum(axis=0)).ravel()
 
@@ -127,7 +121,6 @@ class Visualizator:
             log=True
         )
 
-        # Generate a histogram for the query
         similarities = cosine_similarity(scrap_vals, query_vals)
         similarities = np.mean(similarities, axis=1)
         unique, counts = np.unique(similarities, return_counts=True)

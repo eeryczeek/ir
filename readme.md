@@ -1,4 +1,4 @@
-# Project: Wiki Article Relevance Ranking
+# Project: Wiki Article Relevance Ranking **[LINK TO GITHUB REPOSITORY](https://github.com/eeryczeek/ir)**
 - Eryk Ptaszyński 151950
 - Eryk Walter 151931
 
@@ -158,4 +158,3 @@ rank|scores|articles
 ## Conclusion
 
 This project successfully ranks wiki articles based on relevance to user queries and visited sites. The algorithm's effectiveness is demonstrated through statistical analysis and examples of recommendations.
-
