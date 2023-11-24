@@ -4,7 +4,6 @@ from utils import save_wiki_articles, load_wiki_articles, read_query_links, save
 from evaluator import Evaluator
 import os
 import argparse
-import json
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
