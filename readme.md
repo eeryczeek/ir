@@ -1,6 +1,6 @@
 # Project: Wiki Article Relevance Ranking
 - Eryk Ptaszyński 151950
-- Eryk Walter 151948
+- Eryk Walter 151931
 
 ## Overview
 
