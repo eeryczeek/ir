@@ -1,4 +1,4 @@
-# Project: Wiki Article Relevance Ranking **[LINK TO GITHUB REPOSITORY](https://github.com/eeryczeek/ir)**
+# Project: Wiki Article Relevance Ranking
 - Eryk Ptaszyński 151950
 - Eryk Walter 151931
 
@@ -96,7 +96,7 @@ sorted_ranking = sorted(scrapped_files_ranking.items(), key=lambda x: x[1], reve
 
 #### Top 5 Articles:
 
-rank|scores|articles
+rank|article|score
 ---|---|---
 1|[Marie Gaudin](https://en.wikipedia.org/w/index.php?title=Marie_Gaudin&oldid=1141991329)|`0.13535992551329262`
 2|[Counter-Reformation in Poland](https://en.wikipedia.org/w/index.php?title=Counter-Reformation_in_Poland&oldid=1160541478)|`0.1222157785328554`
@@ -118,7 +118,7 @@ rank|scores|articles
 
 #### Top 5 Articles:
 
-rank|scores|articles
+rank|article|score
 ---|---|---
 1|[Doctor of Science](https://en.wikipedia.org/w/index.php?title=Doctor_of_Science&oldid=1181230122)|`0.2036485745710449`
 2|[Transitional Justice Institute](https://en.wikipedia.org/w/index.php?title=Transitional_Justice_Institute&oldid=1173855381)|`0.1976957705688441`
@@ -140,7 +140,7 @@ rank|scores|articles
 
 #### Top 5 Articles:
 
-rank|scores|articles
+rank|article|score
 ---|---|---
 1|[Mahmoud Kalari](https://en.wikipedia.org/w/index.php?title=Mahmoud_Kalari&oldid=1181050667)|`0.2441152496813287`
 2|[BoPET](https://en.wikipedia.org/w/index.php?title=BoPET&oldid=1182402711)|`0.23662166286408362`
